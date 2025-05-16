@@ -1,0 +1,376 @@
+/* Import custom font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Apply base styles to body */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f2f2f2;
+    padding-top: 60px; /* نفس ارتفاع الـ navbar تقريباً */
+
+}
+
+/* Style for cards grid layout */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Center the original image card */
+.grid-container.single-image {
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+/* Card styling */
+.image-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    text-align: center;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: calc(20% - 20px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Image inside card */
+.image-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Card details section */
+.image-details {
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Hover effect for image cards */
+.image-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Main container alignment and spacing */
+.container {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navbar styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+/* Logo inside navbar */
+.logo-link img {
+    max-height: 50px;
+    width: auto;
+}
+
+/* Navbar links container */
+.navbar-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+/* Navbar link text */
+.navbar-links span {
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Navbar link hover effect */
+.navbar-links span:hover {
+    color: #f39c12;
+}
+
+/* H1 heading styles */
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Global H2 heading style */
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    position: relative;
+    top: 10px !important;
+}
+
+/* Custom heading style for results page */
+.result-heading {
+    margin-top: -10px;
+    position: relative;
+    top: 15px;
+}
+
+/* Form layout and spacing */
+form {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* File input field styling */
+form input[type="file"] {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Submit button styling */
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Submit button hover effect */
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100vw;
+    box-sizing: border-box;
+    margin-top: auto;
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Footer content layout */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Footer section columns */
+.footer-section {
+    width: 30%;
+    box-sizing: border-box;
+}
+
+/* Footer section titles */
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Footer paragraph text */
+.footer-section p {
+    font-size: 14px;
+}
+
+/* Footer list reset */
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Footer list items */
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Footer links */
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Footer link hover effect */
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Social/media links in footer */
+.footer-section a {
+    color: white;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.footer-section a:hover {
+    color: #f39c12;
+}
+
+/* Footer bottom area */
+.footer-bottom {
+    background-color: #333;
+    padding: 0px 0px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    display: none;
+    position: relative;
+    margin-top: 80px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Custom file upload button */
+.custom-file-upload {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Space between file icon and text */
+.custom-file-upload i {
+    margin-right: 8px;
+}
+
+/* Hide default file input */
+input[type="file"] {
+    display: none;
+}
+
+/* Submit button inside upload form */
+button[type="submit"] {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Submit hover effect */
+button[type="submit"]:hover {
+    background-color: #916622;
+}
+
+/* Upload success message box */
+.upload-message {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Container for upload message */
+#upload-message-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Success alert box styling */
+.alert.success {
+    background-color: #888573;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    margin-top: 0px;
+}
+
+/* Error alert box styling */
+.alert.error {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Base alert style */
+.alert {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Footer responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Adjust main container spacing */
+.container {
+    flex: 1;
+    padding: 20px;
+    margin-top: -20px;
+}
+.filter-bar {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.gender-filter-form label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+.gender-filter-form select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category }} Products</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="logo-link" title="Home">
+            <img src="{{ url_for('static', filename='images/image-removebg-preview.png') }}" alt="Logo" class="logo">
+        </a>
+
+        <div class="navbar-links">
+            <span>Help</span>
+            <span>Contact Us</span>
+        </div>
+    </div>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Page title -->
+        <h1>{{ category }}</h1>
+
+        <!-- Gender filter dropdown (only shown if there are genders to choose from) -->
+        {% if genders %}
+        <div class="filter-bar">
+            <form method="get" class="gender-filter-form">
+                <label for="gender">Filter by Gender:</label>
+                <select name="gender" id="gender" onchange="this.form.submit()">
+                    <option value="">All</option>
+                    {% for gender in genders %}
+                        <option value="{{ gender }}" {% if gender == selected_gender %}selected{% endif %}>{{ gender }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+        {% endif %}
+
+        <!-- Product grid -->
+        <div class="grid-container">
+            {% for product in products %}
+                <div class="image-card">
+                    <img src="{{ product.image }}" alt="{{ product.name }}">
+                    <div class="image-details">
+                        <h3>{{ product.name }}</h3>
+                        <p>Type: {{ product.type }}</p>
+                        <p>Color: {{ product.color }}</p>
+                        <p>Price: {{ product.price }} EGP</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>We are a leading online store offering a wide range of products to our customers.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Our Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Products</title>
+
+    <!-- Link to custom CSS and Font Awesome icons -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <!-- Left: Logo linking to homepage -->
+        <a href="{{ url_for('index') }}" class="logo-link" title="Home">
+            <img src="{{ url_for('static', filename='images/image-removebg-preview.png') }}" alt="Logo" class="logo">
+        </a>
+    
+        <!-- Right: Help and Contact Us links -->
+        <div class="navbar-links">
+            <span>Help</span>
+            <span>Contact Us</span>
+        </div>
+    </div>
+
+    <!-- Main content container -->
+    <div class="container">
+        <!-- Title for uploaded image section -->
+        <h1>Uploaded Product</h1>
+
+        <!-- Display the uploaded image as a card, centered -->
+        <div class="grid-container single-image">
+            <div class="image-card">
+                <img src="{{ url_for('static', filename='uploads/' + original) }}" alt="Uploaded Image">
+            </div>
+        </div>
+
+        <!-- Title for similar products -->
+        <h2 class="result-heading">Similar Products</h2>
+
+        <!-- Loop through and display recommended products -->
+        <div class="grid-container">
+            {% for item in results %}
+                <div class="image-card">
+                    <!-- Product image -->
+                    <img src="{{ item.path }}" alt="{{ item.name }}">
+
+                    <!-- Product details: name, type, color, and price -->
+                    <div class="image-details">
+                        <h3>{{ item.name }}</h3>
+                        <p>Type: {{ item.type }}</p>
+                        <p>Color: {{ item.color }}</p>
+                        <p>Price: {{ item.price }} EGP</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-content">
+            <!-- About section -->
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>We are a leading online store offering a wide range of products to our customers.</p>
+            </div>
+
+            <!-- Quick links section -->
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Social media links -->
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- Bottom copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Our Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

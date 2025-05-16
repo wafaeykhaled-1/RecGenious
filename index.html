@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <!-- Link to custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <!-- Left: Website logo linking to home page -->
+        <a href="{{ url_for('index') }}" class="logo-link" title="Home">
+            <img src="{{ url_for('static', filename='images/image-removebg-preview.png') }}" alt="Logo" class="logo">
+        </a>
+    
+        <!-- Right: Navigation links -->
+        <div class="navbar-links">
+            <span>Help</span>
+            <span>Contact Us</span>
+        </div>
+    </div>
+
+    <!-- Main container -->
+    <div class="container">
+
+        <!-- Main heading -->
+        <h1>Upload a Product Image for Recommendation</h1>
+
+        <!-- Image upload form -->
+        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+            <!-- Custom styled file upload button -->
+            <label for="file-upload" class="custom-file-upload">
+                <i class="fas fa-camera"></i> <!-- Camera icon -->
+                Choose a file
+            </label>
+
+            <!-- Hidden file input -->
+            <input type="file" name="image" id="file-upload" required style="display: none;">
+
+            <!-- Submit button -->
+            <button type="submit">Recommend</button>
+        </form>
+
+        <!-- Container for the upload success message -->
+        <div id="upload-message-container"></div>
+
+        <!-- JavaScript to show success message when image is selected -->
+        <script>
+            document.getElementById('file-upload').addEventListener('change', function() {
+                // Create the upload confirmation message
+                var uploadMessage = document.createElement('div');
+                uploadMessage.classList.add('upload-message', 'alert', 'success');
+                uploadMessage.innerHTML = 'Image selected successfully!';
+                
+                // Display the message below the upload button
+                var messageContainer = document.getElementById('upload-message-container');
+                messageContainer.innerHTML = ''; // Clear previous messages
+                messageContainer.appendChild(uploadMessage);
+            });
+        </script>
+
+        <!-- Section title for product categories -->
+        <h2>Check Our Products</h2>
+
+        <!-- Grid for the first 5 categories -->
+        <div class="grid-container">
+            {% for category in categories[:5] %}
+                <div class="image-card">
+                    <!-- Clickable category image linking to category page -->
+                    <a href="{{ url_for('category', category_name=category.name) }}">
+                        <img src="{{ url_for('static', filename='images/' ~ category.image_filename) }}" alt="Category" class="clickable-image">
+                    </a>
+                    <!-- Category name -->
+                    <div class="image-details">
+                        <h3>{{ category.name }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Grid for the next 5 categories -->
+        <div class="grid-container">
+            {% for category in categories[5:10] %}
+                <div class="image-card">
+                    <!-- Clickable category image linking to category page -->
+                    <a href="{{ url_for('category', category_name=category.name) }}">
+                        <img src="{{ url_for('static', filename='images/' ~ category.image_filename) }}" alt="Category" class="clickable-image">
+                    </a>
+                    <!-- Category name -->
+                    <div class="image-details">
+                        <h3>{{ category.name }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+
+    </div> <!-- End of main container -->
+
+    <!-- Footer section -->
+    <footer>
+        <!-- Footer content with 3 sections -->
+        <div class="footer-content">
+            <!-- About section -->
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>We are a leading online store offering a wide range of products to our customers.</p>
+            </div>
+
+            <!-- Quick links section -->
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Social media section -->
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- Footer bottom text -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Our Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
